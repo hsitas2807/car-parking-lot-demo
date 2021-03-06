@@ -3,7 +3,11 @@ let maxSize = 0;
 let availableSlot = [];
 const utilFunctions = require('../helpers/utils');
 
-
+/**
+ *  Create a parking lot with inital size
+ * @param {
+ * } noOfLot 
+ */
 let createParkingLot = async (noOfLot) => {
   try {
     maxSize = parseInt(noOfLot);
@@ -18,7 +22,11 @@ let createParkingLot = async (noOfLot) => {
 
 }
 
-
+/**
+ *  park a car and assign a slot
+ * @param {
+ * } registratonNo 
+ */
 let park = async (registratonNo) => {
   if (maxSize === 0) {
     return `parking lot is not initiated`;
@@ -30,13 +38,17 @@ let park = async (registratonNo) => {
       'slot': slot,
       'registratonNo': registratonNo
     });
-    console.log("pushed to car",Car);
+    console.log("pushed to car", Car);
     availableSlot.shift();
     return `Allocated slot number: ${slot}`
   }
 }
 
-
+/**
+ * free a car from assigned slot
+ * 
+ * @param {*} slot 
+ */
 let leave = async (slot) => {
   slot = parseInt(slot);
   if (maxSize === 0) {
@@ -63,22 +75,26 @@ let leave = async (slot) => {
   }
 }
 
-
+/**
+ *  Get car parking details
+ * @param {
+ * } carinfo 
+ */
 let getCarDetails = async (carinfo) => {
 
   if (maxSize === 0) {
     return "parking lot is not initiated";
   } else if (Car.length > 0) {
-     console.log(carinfo);
+    console.log(carinfo);
     let resultSet = [];
     Car.forEach(function (row) {
       if (row.slot === carinfo || row.registratonNo === carinfo) {
-       
+
         resultSet.push(`Slot : ${row.slot}`);
         resultSet.push(` Registration Number : ${row.registratonNo} `);
       }
     });
-  
+
     let finalResponse = '';
     if (resultSet === undefined) return `Not found`;
 

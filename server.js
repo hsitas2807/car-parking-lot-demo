@@ -6,7 +6,10 @@ const { rateLimiter } = require('./helpers/rateLimiter');
 
 app.use(rateLimiter);
 
-
+/**
+ *  API service and server
+ * 
+ */
 app.listen(3000, function () {
   console.log('listening on 3000');
   initmain.intiMain();

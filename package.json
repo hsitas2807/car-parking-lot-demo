@@ -1,0 +1,24 @@
+{
+  "name": "parkinglot-demo",
+  "version": "1.0.0",
+  "description": "Parking lot Apis",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "sdixit",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.3",
+    "mocha": "^8.3.1",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,15 +1,19 @@
 const redis = require('redis')
 
+/**
+ *  Implements rate limiter to check for number fo request from particular IP.
+ * 
+ */
 const client = redis.createClient(process.env.REDIS_URL)
 
 client.on('error', err => console.log(`Error ${err}`))
 
-const rateLimiter  = (req, res, next) => {
+const rateLimiter = (req, res, next) => {
   const ip = req.ip // get the ip address for the user here
   client
-    .multi() 
-    .set([ip, 0, 'EX', 10, 'NX']) 
-    .incr(ip) 
+    .multi()
+    .set([ip, 0, 'EX', 10, 'NX'])
+    .incr(ip)
     .exec((err, replies) => {
       if (err) {
         return res.status(500).send(err.message)

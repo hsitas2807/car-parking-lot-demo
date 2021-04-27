@@ -1,3 +1,4 @@
+Application is made using nodeJs
 #How to use 
 
 Install all dependencies (testing dependent packages)
